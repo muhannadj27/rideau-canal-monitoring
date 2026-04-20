@@ -169,20 +169,29 @@ See individual repository READMEs for detailed instructions.
 ## AI Tools Disclosure
 
 ### Tools Used
-- **Claude (Anthropic):** Used as a learning aid and coding assistant
+- **Claude (Anthropic):** Used as a coding assistant and debugging aid
 
 ### How AI Was Used
-- Guided me through Azure service setup and CLI commands
-- Helped generate boilerplate code for the sensor simulator and dashboard
-- Assisted with documentation and README formatting
+- Helped with Azure CLI commands for setting up resources
+- Assisted with boilerplate code generation for the sensor simulator and dashboard
+- Debugged a field name casing mismatch between Stream Analytics output and the dashboard
+- Helped with README formatting and documentation structure
 
-### My Own Work
-- All Azure resource provisioning and configuration was done by me manually
-- I configured IoT Hub, Stream Analytics inputs/outputs, and Cosmos DB through Azure Portal
-- I deployed the dashboard to Azure App Service
-- I understood and can explain how each component works and connects
-- I troubleshot real issues like VM size restrictions, IoT Hub message limits, and region compatibility
+### My Understanding
+I fully understand every component of this project and can explain how they work:
+- **IoT Hub** receives telemetry from 3 simulated devices over AMQP using device connection strings
+- **Stream Analytics** uses tumbling windows to batch 5 minutes of readings and applies aggregation functions (AVG, MIN, MAX, COUNT) with a CASE statement for safety logic
+- **Cosmos DB** stores the aggregated documents partitioned by location for fast queries from the dashboard API
+- **Blob Storage** archives the same aggregated data organized by date/time for historical analysis
+- **The dashboard** runs an Express server with three REST endpoints that query Cosmos DB using the @azure/cosmos SDK, and the frontend uses Chart.js to render trend lines with a 30-second auto-refresh interval
+- **The sensor simulator** uses Python's asyncio to run three concurrent device clients, each sending JSON telemetry to IoT Hub every 10 seconds
 
+### What I Did Manually
+- Provisioned and configured all Azure resources (IoT Hub, Stream Analytics, Cosmos DB, Blob Storage, App Service)
+- Registered IoT devices and managed connection strings
+- Configured Stream Analytics inputs, outputs, and started the job
+- Deployed the dashboard to Azure App Service
+- Troubleshot real issues including VM size restrictions, IoT Hub daily message limits, Cosmos DB region compatibility, and field name mismatches
 ## References
 
 - [Azure IoT Hub Documentation](https://docs.microsoft.com/en-us/azure/iot-hub/)
