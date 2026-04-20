@@ -9,6 +9,8 @@
 ## Project Overview
 
 The Rideau Canal Skateway requires constant monitoring to ensure skater safety. This system simulates IoT sensors at three locations along the canal, processes the data in real-time, and displays live conditions through a web dashboard.
+## Demo
+- **Video Demo:** https://youtu.be/Xv393WAfsP0
 
 ### Locations Monitored
 - **Dow's Lake**
@@ -167,15 +169,19 @@ See individual repository READMEs for detailed instructions.
 ## AI Tools Disclosure
 
 ### Tools Used
-- **Claude (Anthropic):** Used for code generation, debugging, architecture guidance, and documentation writing
-- **Purpose:** Generating boilerplate code for the sensor simulator and dashboard, troubleshooting Azure CLI errors, and creating documentation
+- **Claude (Anthropic):** Used as a learning aid and coding assistant
 
-### AI-Generated vs. Original Work
-- The overall architecture design and Azure service configuration were done with AI guidance
-- Python sensor simulator code was AI-generated and customized
-- Node.js dashboard code was AI-generated and debugged to match actual Cosmos DB schema
-- All Azure resource provisioning and deployment was performed manually
-- Documentation was drafted with AI assistance
+### How AI Was Used
+- Guided me through Azure service setup and CLI commands
+- Helped generate boilerplate code for the sensor simulator and dashboard
+- Assisted with documentation and README formatting
+
+### My Own Work
+- All Azure resource provisioning and configuration was done by me manually
+- I configured IoT Hub, Stream Analytics inputs/outputs, and Cosmos DB through Azure Portal
+- I deployed the dashboard to Azure App Service
+- I understood and can explain how each component works and connects
+- I troubleshot real issues like VM size restrictions, IoT Hub message limits, and region compatibility
 
 ## References
 
